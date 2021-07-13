@@ -1,0 +1,9 @@
+.board {
+  >div {
+    display: flex;
+    
+    >div {
+      padding: 0 1em;
+    }
+  }
+}

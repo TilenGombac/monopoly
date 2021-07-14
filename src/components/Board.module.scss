@@ -1,9 +1,140 @@
-.board {
+// Generated with: https://grid.layoutit.com/
+.container {
+  display: grid; 
+  grid-template-columns: 1fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 1fr; 
+  grid-template-rows: 1fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 1fr; 
+  gap: 0px 0px;
+
+  width: 900px;
+  height: 900px;
+  background: lightblue;
+}
+
+.bottom {
+  grid-area: 11 / 2 / 12 / 11;
+
+  border-top: 1px solid black;
+
   >div {
-    display: flex;
-    
-    >div {
-      padding: 0 1em;
+    border-right: 1px solid black;
+
+    &:last-child {
+      border: 0;
     }
+  }
+}
+
+.left {
+  grid-area: 2 / 1 / 11 / 2;
+
+  border-right: 1px solid black;
+
+  >div {
+    border-bottom: 1px solid black;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}
+
+.top {
+  grid-area: 1 / 2 / 2 / 11;
+
+  border-bottom: 1px solid black;
+
+  >div {
+    border-right: 1px solid black;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}
+
+.right {
+  grid-area: 2 / 11 / 11 / 12;
+
+  border-left: 1px solid black;
+
+  >div {
+    border-bottom: 1px solid black;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}
+
+.cardsTop {
+  grid-area: 2 / 2 / 6 / 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &> p {
+    font-size: 2em;
+    padding: 1.5em;
+    border: 1px solid black;
+    text-align: center;
+    transform-origin: center center;
+    transform: translate(60px, 60px) rotate(135deg);
+    font-weight: bold;
+  }
+}
+
+.cardsBottom {
+  grid-area: 7 / 7 / 11 / 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &> p {
+    width: 100%;
+    font-size: 2em;
+    padding: 2em 1.5em;
+    border: 1px solid black;
+    text-align: center;
+    transform-origin: center center;
+    transform: translate(-60px, -60px) rotate(-45deg);
+    font-weight: bold;
+  }
+}
+
+.center {
+  grid-area: 4 / 4 / 9 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &> p {
+    flex-grow: 1;
+    font-size: 3em;
+    text-align: center;
+    transform-origin: center center;
+    transform: rotate(-45deg);
+    font-weight: bold;
+  }
+}
+
+
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  >div {
+    flex-grow: 1;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  >div {
+    flex-grow: 1;
   }
 }

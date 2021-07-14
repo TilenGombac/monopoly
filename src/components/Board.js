@@ -24,37 +24,69 @@ const Board = (props) => {
     return -sortFieldsAsc(first, second);
   }
 
+
+
+  const handleDiceClick = () => {
+    props.moves.rollDice();
+  }
+
+
+  const displayTokens = (fieldId) => {
+
+    let playerIndexes = [];
+
+    for(let i = 0; i < props.G.tokenPositions.length; i++) {
+      if(props.G.tokenPositions[i] === fieldId) {
+        playerIndexes.push(i);
+      }
+    }
+
+    if(playerIndexes === []) return '';
+
+    return playerIndexes.map(playerIndex =>
+      <p>{`Player ${playerIndex}`}</p>  
+    );
+  }
+
+
+
   const CornerFields = props.G.fields
     .filter(field => (field % 10) === 0)
     .map((field, i) =>
-      <div style={boardStyles.corners[i]}>{field}</div>
+      <div style={boardStyles.corners[i]}>{field} {displayTokens(field)}</div>
     )
 
   const BottomFields = props.G.fields
     .filter(field => field < 10 && (field % 10) !== 0)
     .sort(sortFieldsDesc)
     .map(field =>
-      <div>{field}</div>  
+      <div>{field} {displayTokens(field)}</div>  
     )
 
   const LeftFields = props.G.fields
     .filter(field => (field > 10 && field < 20) && (field % 10) !== 0)
     .sort(sortFieldsDesc)
     .map(field =>
-      <div>{field}</div>
+      <div>{field} {displayTokens(field)}</div>
     )
 
   const TopFields = props.G.fields
     .filter(field => (field > 20 && field < 30) && (field % 10) !== 0)
     .map(field =>
-      <div>{field}</div>
+      <div>{field} {displayTokens(field)}</div>
     )
 
   const RightFields = props.G.fields
     .filter(field => (field > 30 && field < 40) && (field % 10) !== 0)
     .map(field =>
-      <div>{field}</div>
+      <div>{field} {displayTokens(field)}</div>
     )
+
+  const Dice = props.G.dice.map(die =>
+    <div className={boardStyle.die}>
+      <p>{die}</p>
+    </div>
+  )
   
   return (
     <div className={boardStyle.board}>
@@ -87,6 +119,10 @@ const Board = (props) => {
 
         <div className={boardStyle.center}>
           <p>Monopoly</p>
+        </div>
+
+        <div className={boardStyle.dice} onClick={handleDiceClick}>
+          {Dice}
         </div>
       </div>
     </div>
